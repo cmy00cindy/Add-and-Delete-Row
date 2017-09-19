@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js-动态添加和删除行</title>
+    <meta charset="utf-8" />
+    <script src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <table>
+        <tr><td><input type="text" /><span id="add">添加</span></td></tr>
+        <tr id="tr1"><td><span id="delete">删除</span></td></tr>
+    </table>
+
+    <script type="text/javascript">
+        var number = 0;
+        $(function () {
+            // 添加行
+            $('#add').on('click', function () {
+                number++;
+                var str = '<tr data-number="addTr"><td class="text-con" id="eventDetail" colspan="5"><input type="text" class="form-control from-control-form" name="event-detail" value="' + number + '" ></td></tr>';
+                $('#tr1').before(str);
+            })
+            // 删除行
+            $('#delete').on('click', function () {
+                $('table').find('tr[data-number="addTr"]').last().remove();
+            })
+        })
+    </script>
+</body>
+</html>
